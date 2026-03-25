@@ -116,6 +116,17 @@
         .resume-btn:hover { transform: scale(1.1); }
         .resume-btn:active { transform: scale(0.95); }
 
+        /* Resume object */
+        .resume-object {
+            width:100%;
+            height:600px;
+            border-radius:12px;
+            margin-top:20px;
+        }
+        @media (max-width:768px){
+            .resume-object{height:400px;}
+        }
+
         /* Contact Form */
         input, textarea {
             width: 80%;
@@ -150,7 +161,7 @@
             padding: 12px 20px;
             border-radius: 50px;
             font-weight: bold;
-            text-decoration: none;
+            text-decoration:none;
             box-shadow: 0 0 15px rgba(0,255,204,0.4);
             transition: transform 0.3s, box-shadow 0.3s;
             z-index: 100;
@@ -162,7 +173,6 @@
         .floating-resume-btn:active {
             transform: scale(0.95);
         }
-
     </style>
 </head>
 
@@ -182,10 +192,7 @@
     <div class="cursor-glow" id="glow"></div>
 
     <!-- Header -->
-    <h1>
-        <span style="vertical-align:middle;">🔥</span> Hi, I'm PRAJINDHAN <span style="vertical-align:middle; font-weight:bold; text-transform:uppercase;">S</span>
-    </h1>
-
+    <h1>🔥 Hi, I'm PRAJINDHAN <span style="vertical-align:middle; font-weight:bold; text-transform:uppercase;">S</span></h1>
     <p>👨‍🔧 2nd Year Mechanical Engineering Student</p>
     <p>💻 Passionate about Designing & Learning Technology</p>
 
@@ -224,8 +231,13 @@
     <div class="box">
         <h2 class="gradient-text">📄 Resume</h2>
         <a href="Prajindhan_Resume_Final.pdf" target="_blank" class="resume-btn">
-            <i class="fas fa-file-pdf"></i> View / Download Resume
+            <i class="fas fa-file-pdf"></i> Open / Download Resume
         </a>
+        <br><br>
+        <object data="Prajindhan_Resume_Final.pdf" type="application/pdf" class="resume-object">
+            <p>Your browser does not support PDFs. 
+            <a href="Prajindhan_Resume_Final.pdf" target="_blank">Click here to download the resume.</a></p>
+        </object>
     </div>
 
     <!-- Contact Form -->
@@ -245,38 +257,32 @@
         <p>Thanks for visiting my website. I appreciate your time and interest! 😎</p>
     </div>
 
-    <footer>
-        😎 Designed by Prajindhan S | 2026
-    </footer>
+    <footer>😎 Designed by Prajindhan S | 2026</footer>
 
 </div>
 
 <script>
-// Dark/Light Toggle
-function toggleMode() {
-    document.body.classList.toggle("light");
-}
+    // Dark/Light Toggle
+    function toggleMode() { document.body.classList.toggle("light"); }
 
-// Cursor Glow
-const glow = document.getElementById("glow");
-document.addEventListener("mousemove",(e)=>{
-    glow.style.left=e.clientX+"px";
-    glow.style.top=e.clientY+"px";
-});
-
-// Scroll Fade-In Animation
-const boxes = document.querySelectorAll('.box');
-window.addEventListener('scroll', checkBoxes);
-function checkBoxes() {
-    const triggerBottom = window.innerHeight / 5 * 4;
-    boxes.forEach(box => {
-        const boxTop = box.getBoundingClientRect().top;
-        if(boxTop < triggerBottom) {
-            box.classList.add('visible');
-        }
+    // Cursor Glow
+    const glow = document.getElementById("glow");
+    document.addEventListener("mousemove",(e)=>{
+        glow.style.left=e.clientX+"px";
+        glow.style.top=e.clientY+"px";
     });
-}
-checkBoxes();
+
+    // Scroll Fade-In Animation
+    const boxes = document.querySelectorAll('.box');
+    window.addEventListener('scroll', checkBoxes);
+    function checkBoxes() {
+        const triggerBottom = window.innerHeight / 5 * 4;
+        boxes.forEach(box => {
+            const boxTop = box.getBoundingClientRect().top;
+            if(boxTop < triggerBottom) { box.classList.add('visible'); }
+        });
+    }
+    checkBoxes();
 </script>
 
 </body>

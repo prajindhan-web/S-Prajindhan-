@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Prajindhan S Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         body {
             margin:0;
             font-family: Arial, sans-serif;
             text-align:center;
-            overflow-x:hidden;
             background:#0d1117;
             color:white;
         }
@@ -31,12 +31,7 @@
         }
         .box.visible { opacity:1; transform:translateY(0); }
 
-        h1 { color:#00ffcc; margin-top:50px; line-height:1.2; font-size:40px; }
-
-        a { color:#00ffcc; text-decoration:none; }
-        .social a { font-size:26px; margin:10px; display:inline-block; transition:0.3s; }
-        .social a:hover { transform: scale(1.3); }
-
+        h1 { color:#00ffcc; margin-top:50px; font-size:40px; line-height:1.2; }
         .gradient-text {
             font-size:28px;
             font-weight:bold;
@@ -46,12 +41,15 @@
             -webkit-text-fill-color: transparent;
             animation: gradientAnimation 6s ease infinite;
         }
-
         @keyframes gradientAnimation {
             0%{background-position:0% 50%;}
             50%{background-position:100% 50%;}
             100%{background-position:0% 50%;}
         }
+
+        a { color:#00ffcc; text-decoration:none; }
+        .social a { font-size:26px; margin:10px; display:inline-block; transition:0.3s; }
+        .social a:hover { transform: scale(1.3); }
 
         .resume-btn {
             display:inline-block;
@@ -102,19 +100,13 @@
             text-decoration:none;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             z-index:100;
-            transition:0.3s;
+            animation: pulseAnimation 2s infinite ease-in-out;
         }
-        .floating-resume-btn:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(0,255,204,0.6); }
-        .floating-resume-btn:active { transform: scale(0.95); }
 
-        /* Pulse animation for floating button */
         @keyframes pulseAnimation {
             0% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,255,204,0.3); }
             50% { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,255,204,0.6); }
             100% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,255,204,0.3); }
-        }
-        .floating-resume-btn.pulse {
-            animation: pulseAnimation 2s infinite ease-in-out;
         }
 
         .cursor-glow {
@@ -127,7 +119,6 @@
             z-index:10;
         }
 
-        /* Responsive */
         @media (max-width:768px){
             .resume-object{height:60vh !important;}
             .resume-btn { padding:12px 20px !important; font-size:16px !important; }
@@ -140,8 +131,7 @@
 </head>
 <body>
 
-<!-- Floating Resume Button -->
-<a href="Prajindhan_Resume_Final.pdf" download class="floating-resume-btn pulse">
+<a href="Prajindhan_Resume_Final.pdf" download class="floating-resume-btn">
     <i class="fas fa-file-pdf"></i> Download Resume
 </a>
 
@@ -162,7 +152,7 @@
     <div class="box">
         <h2 class="gradient-text">📌 About Me</h2>
         <p>I am a 2nd-year Mechanical Engineering student passionate about creating innovative solutions.</p>
-        <p>I enjoy designing machines, exploring engineering challenges, and learning the latest technologies to sharpen my skills.</p>
+        <p>I enjoy designing machines, exploring engineering challenges, and learning the latest technologies.</p>
     </div>
 
     <!-- Skills -->
@@ -179,25 +169,18 @@
         <h2 class="gradient-text">🚀 Projects</h2>
         <p>🔩 Mini Mechanical Projects: Gear systems, linkages, and small automation setups</p>
         <p>📊 Engineering Assignments: CAD designs, simulations, and real-world applications</p>
-        <p>🚀 Experimental & Learning Projects: Hands-on experiments to improve technical knowledge</p>
     </div>
 
-    <!-- Resume Section with Scroll Animation -->
+    <!-- Resume Section -->
     <div class="box" id="resume-box">
         <h2 class="gradient-text" style="font-size:32px;">📄 My Resume</h2>
-
-        <!-- Download Button (always visible) -->
         <a href="Prajindhan_Resume_Final.pdf" target="_blank" class="resume-btn">
             <i class="fas fa-file-pdf"></i> Open / Download Resume
         </a>
-
-        <!-- Embedded PDF preview -->
         <object data="Prajindhan_Resume_Final.pdf" type="application/pdf" class="resume-object">
             <p>Your browser does not support PDFs. 
             <a href="Prajindhan_Resume_Final.pdf" download>Click here to download the resume</a>.</p>
         </object>
-
-        <!-- Thank You Note -->
         <p style="margin-top:20px; font-size:18px; color:white;">🙏 Thank you for visiting my website!</p>
     </div>
 
@@ -216,23 +199,23 @@
 </div>
 
 <script>
-    // Mouse glow effect
+    // Mouse glow
     const glow = document.getElementById("glow");
     document.addEventListener("mousemove",(e)=>{
         glow.style.left=e.clientX+"px";
         glow.style.top=e.clientY+"px";
     });
 
-    // Scroll animation for all boxes including resume
+    // Scroll animations
     const boxes = document.querySelectorAll('.box');
-    window.addEventListener('scroll', checkBoxes);
     function checkBoxes() {
         const triggerBottom = window.innerHeight / 5 * 4;
         boxes.forEach(box => {
             const boxTop = box.getBoundingClientRect().top;
-            if(boxTop < triggerBottom) { box.classList.add('visible'); }
+            if(boxTop < triggerBottom){ box.classList.add('visible'); }
         });
     }
+    window.addEventListener('scroll', checkBoxes);
     checkBoxes();
 </script>
 </body>
